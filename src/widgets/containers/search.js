@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import SearchLayout from '../components/search-layout';
 import Input from '../components/input';
+import { connect } from 'react-redux';
 
 class Search extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const value = this.inputSearch.value;
-    console.log(value);
+    // console.log(value);
+    this.props.dispatch({
+      type: 'SET_SEARCH',
+      payload: {
+        query: value
+      }
+    })
   }
   // handleInputChange = (event) => {
   //   this.setState({
@@ -31,4 +38,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default connect(null)(Search);

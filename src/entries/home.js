@@ -6,9 +6,17 @@ import api from '../api.json';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
+import reducer from '../reducers/search';
+
+const initialState = {
+  ...api,
+  query: '',
+  searchResults: []
+}
+
 const store = createStore(
-  (state)=> state,
-  api,
+  reducer,
+  initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
