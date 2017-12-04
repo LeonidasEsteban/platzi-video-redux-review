@@ -1,12 +1,14 @@
 {
   "name": "platzi-video",
   "dependencies": {
+    "immutable": "3.8.2",
     "normalizr": "3.2.4",
     "prop-types": "15.6.0",
     "react": "16.1.0",
     "react-dom": "16.1.0",
     "react-redux": "5.0.6",
-    "redux": "3.7.2"
+    "redux": "3.7.2",
+    "redux-immutable": "4.0.0"
   },
   "scripts": {
     "build:dev": "webpack-dev-server --config webpack.dev.config.js",

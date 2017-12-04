@@ -16,10 +16,10 @@ import data from '../schemas/index';
 const initialState = {
   // searchResults: [],
   data: {
-    ...api,
+    // ...api,
     entities: data.entities,
     search: [],
-    // categories: data.result.categories,
+    categories: data.result.categories,
   },
   modal: {
     visibility: false,
