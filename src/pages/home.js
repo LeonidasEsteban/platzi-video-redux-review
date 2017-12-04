@@ -9,6 +9,7 @@ import HomeLayout from '../layout/components/home-layout';
 import HandleError from '../error/containers/handle-error';
 import Related from '../layout/components/related';
 import { connect } from 'react-redux';
+import { List as list } from 'immutable';
 
 class Home extends Component {
   state = {
@@ -78,12 +79,15 @@ function mapStateToProps(state, props) {
     return state.get('data').get('entities').get('categories').get(categoryId)
   })
 
+  let searchResults = list();
 
-  const mediaList = state.get('data').get('entities').get('media');
   const search = state.get('data').get('search');
-  const searchResults = mediaList.filter((item) => (
-    item.get('author').includes(search)
-  ));
+  if (search) {
+    const mediaList = state.get('data').get('entities').get('media');
+    searchResults = mediaList.filter((item) => (
+      item.get('author').includes(search)
+    )).toList();
+  }
 
   return {
     // categories: state.data.categories,
