@@ -85,7 +85,7 @@ function mapStateToProps(state, props) {
   if (search) {
     const mediaList = state.get('data').get('entities').get('media');
     searchResults = mediaList.filter((item) => (
-      item.get('author').includes(search)
+      item.get('author').toLowerCase().includes(search.toLowerCase())
     )).toList();
   }
 

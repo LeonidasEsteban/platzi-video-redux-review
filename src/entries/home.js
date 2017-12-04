@@ -18,7 +18,8 @@ const initialState = fromJS({
   data: {
     // ...api,
     entities: data.entities,
-    search: [],
+    // search: [],
+    search: '',
     categories: data.result.categories,
   },
   modal: {
