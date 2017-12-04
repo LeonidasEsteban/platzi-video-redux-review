@@ -10,8 +10,8 @@ function Categories(props) {
     <div className="Categories">
       <Search />
       {
-        props.searchResults.length ?
-          props.searchResults.map((item) => {
+        props.search.length ?
+          props.search.map((item) => {
             return <Media {...item} />
           })
         :

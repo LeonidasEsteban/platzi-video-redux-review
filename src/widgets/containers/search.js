@@ -9,7 +9,7 @@ class Search extends Component {
     const value = this.inputSearch.value;
     // console.log(value);
     this.props.dispatch({
-      type: 'SET_SEARCH',
+      type: 'SEARCH_ENTITIES',
       payload: {
         query: value
       }

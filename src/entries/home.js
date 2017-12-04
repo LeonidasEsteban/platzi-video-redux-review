@@ -7,20 +7,24 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 // import reducer from '../reducers/search';
-import reducer from '../reducers/search';
-console.log(reducer)
+import reducer from '../reducers/index';
+// console.log(reducer)
 // import { normalize, schema } from 'normalizr';
 import data from '../schemas/index';
 
 
 const initialState = {
-  // ...api,
-  query: '',
-  searchResults: [],
-  entities: data.entities,
-  categories: data.result.categories,
-  modalVisibility: true,
-
+  // searchResults: [],
+  data: {
+    ...api,
+    entities: data.entities,
+    search: [],
+    // categories: data.result.categories,
+  },
+  modal: {
+    visibility: false,
+    activeMediaId: false,
+  }
 }
 
 

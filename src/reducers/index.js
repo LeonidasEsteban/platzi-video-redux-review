@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import search from './search';
-import entities from './entities';
+// import search from './search';
+import data from './data';
 import modal from './modal';
 
 const rootReducer = combineReducers({
-  searchResults: search,
-  entities,
+  data,
   modal,
 })
 

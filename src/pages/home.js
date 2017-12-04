@@ -46,7 +46,7 @@ class Home extends Component {
           <Categories
             categories={this.props.categories}
             openModal={this.openModal}
-            searchResults={this.props.searchResults}
+            search={this.props.search}
           />
           {
             this.state.modalVisible &&
@@ -71,13 +71,13 @@ class Home extends Component {
 
 
 function mapStateToProps(state, props) {
-  const categories = state.categories.map((categoryId) => {
-    return state.entities.categories[categoryId]
-  })
+  // const categories = state.categories.map((categoryId) => {
+  //   return state.entities.categories[categoryId]
+  // })
   return {
-    // categories: state.entities.categories,
-    categories: categories,
-    searchResults: state.searchResults,
+    categories: state.data.categories,
+    // categories: categories,
+    search: state.data.search,
   }
 }
 
