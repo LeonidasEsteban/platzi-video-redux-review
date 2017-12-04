@@ -6,38 +6,24 @@ import api from '../api.json';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
+// import reducer from '../reducers/search';
 import reducer from '../reducers/search';
+console.log(reducer)
+// import { normalize, schema } from 'normalizr';
+import data from '../schemas/index';
 
-import { normalize, schema } from 'normalizr';
-
-
-
-// const xyw = new schema.Entity('category', options = {idAttribute:})
-
-
-const media = new schema.Entity('media', {}, {
-  idAttribute: 'id',
-  processStrategy: (value, parent, key) => ({...value, category: parent.id})
-});
-
-const category = new schema.Entity('categories', {
-  playlist: new schema.Array(media),
-});
-
-// Entity(key, definition = {}, options = {})
-
-const categories = { categories: new schema.Array(category) }
-
-// const normalizedData = normalize(data, schema);
-const normalizedData = normalize(api, categories);
-console.log(normalizedData);
 
 const initialState = {
-  ...api,
+  // ...api,
   query: '',
   searchResults: [],
-  entities: normalizedData.entities
+  entities: data.entities,
+  categories: data.result.categories,
+  modalVisibility: true,
+
 }
+
+
 
 const store = createStore(
   reducer,

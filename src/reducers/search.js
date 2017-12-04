@@ -1,4 +1,4 @@
-function search (state, action) {
+function search (state = [], action) {
   switch (action.type) {
     case 'SET_SEARCH': {
       const list = state.categories[2].playlist;
