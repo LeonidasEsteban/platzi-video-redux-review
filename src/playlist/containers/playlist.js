@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import Playlist from '../components/playlist';
 
 function mapStateToProps(state, props) {
+  // const playlist = props.playlist.map((mediaId) => {
+  //   return state.data.entities.media[mediaId]
+  // })
   const playlist = props.playlist.map((mediaId) => {
-    return state.data.entities.media[mediaId]
+    return state.get('data').get('entities').get('media').get(mediaId)
   })
   return {
     playlist

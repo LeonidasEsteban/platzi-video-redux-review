@@ -12,9 +12,9 @@ import reducer from '../reducers/index';
 // import { normalize, schema } from 'normalizr';
 import data from '../schemas/index';
 
+import { fromJS } from 'immutable';
 
-const initialState = {
-  // searchResults: [],
+const initialState = fromJS({
   data: {
     // ...api,
     entities: data.entities,
@@ -25,7 +25,7 @@ const initialState = {
     visibility: false,
     activeMediaId: false,
   }
-}
+})
 
 
 

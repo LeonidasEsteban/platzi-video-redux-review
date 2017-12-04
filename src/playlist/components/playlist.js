@@ -9,8 +9,8 @@ function Playlist(props) {
         props.playlist.map((item) => (
           <Media
             openModal={props.openModal}
-            key={item.id}
-            {...item}
+            key={item.get('id')}
+            {...item.toJS()}
           />
         ))
       }

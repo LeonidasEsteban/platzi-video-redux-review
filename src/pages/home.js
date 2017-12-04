@@ -71,13 +71,25 @@ class Home extends Component {
 
 
 function mapStateToProps(state, props) {
-  const categories = state.data.categories.map((categoryId) => {
-    return state.data.entities.categories[categoryId]
+  // const categories = state.data.categories.map((categoryId) => {
+  //   return state.data.entities.categories[categoryId]
+  // })
+  const categories = state.get('data').get('categories').map((categoryId) => {
+    return state.get('data').get('entities').get('categories').get(categoryId)
   })
+
+
+  const mediaList = state.get('data').get('entities').get('media');
+  const search = state.get('data').get('search');
+  const searchResults = mediaList.filter((item) => (
+    item.get('author').includes(search)
+  ));
+
   return {
     // categories: state.data.categories,
     categories: categories,
-    search: state.data.search,
+    // search: state.data.search,
+    search: searchResults,
   }
 }
 
