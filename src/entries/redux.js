@@ -9,7 +9,7 @@ function handleSubmit(event) {
   const title = data.get('title');
   console.log(title);
   store.dispatch({
-    type: 'ADD',
+    type: 'ADD_SONG',
     data: {
       title
     }
@@ -19,7 +19,7 @@ function handleSubmit(event) {
 
 const reducer = function(state, action) {
   switch (action.type) {
-    case 'ADD': {
+    case 'ADD_SONG': {
       return [...state, action.data]
     }
     default: {
@@ -44,9 +44,6 @@ const store = createStore(
    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-// function renderItem(data) {
-// }
-
 function render() {
   const $container = document.getElementById('playlist');
   const playlist = store.getState();
@@ -55,7 +52,6 @@ function render() {
     const template = document.createElement('p');
     template.textContent = item.title;
     $container.appendChild(template);
-    // renderItem(item)
   })
 }
 
