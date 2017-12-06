@@ -12,10 +12,10 @@ import { connect } from 'react-redux';
 import { List as list } from 'immutable';
 
 class Home extends Component {
-  state = {
-    modalVisible: false,
-    // error: false,
-  }
+  // state = {
+  //   modalVisible: false,
+  //   // error: false,
+  // }
   openModal = (id) => {
     // this.setState({
     //   modalVisible: true,
@@ -29,8 +29,11 @@ class Home extends Component {
     })
   }
   closeModal = () => {
-    this.setState({
-      modalVisible: false
+    // this.setState({
+    //   modalVisible: false
+    // })
+    this.props.dispatch({
+      type: 'CLOSE_MODAL',
     })
   }
   // componentDidCatch(error, info) {
@@ -56,15 +59,17 @@ class Home extends Component {
             search={this.props.search}
           />
           {
-            this.state.modalVisible &&
+            // this.state.modalVisible &&
+            this.props.modal.get('visibility') &&
             <ModalContainer>
               <Modal
                 handleModal={this.closeModal}
               >
                 <VideoPlayer
                   autoplay
-                  title={this.state.video.title}
-                  src={this.state.video.src}
+                  mediaId={this.props.modal.get('mediaId')}
+                  // title={this.state.video.title}
+                  // src={this.state.video.src}
                 />
               </Modal>
             </ModalContainer>
@@ -100,6 +105,7 @@ function mapStateToProps(state, props) {
     categories: categories,
     // search: state.data.search,
     search: searchResults,
+    modal: state.get('modal'),
   }
 }
 

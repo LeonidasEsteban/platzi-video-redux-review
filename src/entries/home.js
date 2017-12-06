@@ -24,7 +24,7 @@ const initialState = fromJS({
   },
   modal: {
     visibility: false,
-    activeMediaId: false,
+    mediaId: null,
   }
 })
 

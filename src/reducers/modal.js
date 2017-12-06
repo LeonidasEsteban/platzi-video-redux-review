@@ -1,7 +1,15 @@
 function modal(state = {}, action) {
   switch(action.type) {
-    case 'MODAL_VISIBILITY':
-      return state
+    case 'OPEN_MODAL':
+      return state.merge({
+        visibility: true,
+        mediaId: action.payload.mediaId
+      })
+    case 'CLOSE_MODAL':
+      return state.merge({
+        visibility: false,
+        mediaId: action.payload.mediaId
+      })
     default:
       return state
   }
