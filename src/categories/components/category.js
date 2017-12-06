@@ -12,7 +12,7 @@ function Category(props) {
       <HandleError>
         <Playlist
           playlist={props.playlist}
-          openModal={props.openModal}
+          // openModal={props.openModal}
         />
       </HandleError>
     </div>

@@ -10,6 +10,9 @@ import HandleError from '../error/containers/handle-error';
 import Related from '../layout/components/related';
 import { connect } from 'react-redux';
 import { List as list } from 'immutable';
+// import { openModal, closeModal } from '../actions/index';
+import * as actions from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 class Home extends Component {
   // state = {
@@ -21,20 +24,26 @@ class Home extends Component {
     //   modalVisible: true,
     //   video
     // })
-    this.props.dispatch({
-      type: 'OPEN_MODAL',
-      payload: {
-        mediaId: id
-      }
-    })
+    // this.props.dispatch({
+    //   type: 'OPEN_MODAL',
+    //   payload: {
+    //     mediaId: id
+    //   }
+    // })
+
+    // this.props.dispatch(openModal(id))
+    this.props.actions.openModal(id)
   }
   closeModal = () => {
     // this.setState({
     //   modalVisible: false
     // })
-    this.props.dispatch({
-      type: 'CLOSE_MODAL',
-    })
+    // this.props.dispatch({
+    //   type: 'CLOSE_MODAL',
+    // })
+    // this.props.dispatch(closeModal())
+    this.props.actions.closeModal()
+
   }
   // componentDidCatch(error, info) {
   //   console.log('ha ocurrido un error',error);
@@ -55,7 +64,7 @@ class Home extends Component {
 
           <Categories
             categories={this.props.categories}
-            openModal={this.openModal}
+            // openModal={this.openModal}
             search={this.props.search}
           />
           {
@@ -109,4 +118,10 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SearchLayout from '../components/search-layout';
 import Input from '../components/input';
+// import { searchEntities } from '../../actions/index';
+import * as actions from '../../actions/index';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class Search extends Component {
@@ -8,12 +11,14 @@ class Search extends Component {
     event.preventDefault();
     const value = this.inputSearch.value;
     // console.log(value);
-    this.props.dispatch({
-      type: 'SEARCH_ENTITIES',
-      payload: {
-        query: value
-      }
-    })
+    // this.props.dispatch({
+    //   type: 'SEARCH_ENTITIES',
+    //   payload: {
+    //     query: value
+    //   }
+    // })
+    // this.props.dispatch(searchEntities(value))
+    this.props.actions.searchEntities(value)
   }
   // handleInputChange = (event) => {
   //   this.setState({
@@ -38,4 +43,10 @@ class Search extends Component {
   }
 }
 
-export default connect(null)(Search);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Search);

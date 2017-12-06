@@ -9,7 +9,7 @@ function Playlist(props) {
       {
         props.playlist.map((id) => (
           <Media
-            openModal={props.openModal}
+            // openModal={props.openModal}
             key={id}
             id={id}
           />
