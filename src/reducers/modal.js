@@ -6,10 +6,7 @@ function modal(state = {}, action) {
         mediaId: action.payload.mediaId
       })
     case 'CLOSE_MODAL':
-      return state.merge({
-        visibility: false,
-        mediaId: action.payload.mediaId
-      })
+      return state.set('visibility', false)
     default:
       return state
   }
