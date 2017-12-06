@@ -3,7 +3,7 @@ import Category from './category.js';
 import './categories.css';
 import Search from '../../widgets/containers/search';
 
-import Media from '../../playlist/components/media.js'
+import Media from '../../playlist/containers/media.js'
 
 function Categories(props) {
   return (
@@ -11,7 +11,11 @@ function Categories(props) {
       <Search />
       {
         props.search.map((item) => {
-          return <Media {...item.toJS()} key={item.get('id')}/>
+          return <Media
+            openModal={props.openModal}
+            {...item.toJS()}
+            key={item.get('id')}
+          />
         })
       }
       {
@@ -21,7 +25,7 @@ function Categories(props) {
             {...category.toJS()}
             // key={category.id}
             key={category.get('id')}
-            openModal={props.openModal}
+            // openModal={props.openModal}
           />
         ))
       }

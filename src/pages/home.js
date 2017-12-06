@@ -16,10 +16,16 @@ class Home extends Component {
     modalVisible: false,
     // error: false,
   }
-  openModal = (video) => {
-    this.setState({
-      modalVisible: true,
-      video
+  openModal = (id) => {
+    // this.setState({
+    //   modalVisible: true,
+    //   video
+    // })
+    this.props.dispatch({
+      type: 'OPEN_MODAL',
+      payload: {
+        mediaId: id
+      }
     })
   }
   closeModal = () => {

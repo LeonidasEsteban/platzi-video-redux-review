@@ -1,6 +1,6 @@
 import React from 'react';
-// import Playlist from '../../playlist/components/playlist.js';
-import Playlist from '../../playlist/containers/playlist';
+import Playlist from '../../playlist/components/playlist';
+// import Playlist from '../../playlist/containers/playlist';
 import './category.css';
 import HandleError from '../../error/containers/handle-error'
 
