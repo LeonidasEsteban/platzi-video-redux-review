@@ -4,6 +4,8 @@ import Home from '../pages/home';
 import api from '../api.json';
 
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger'
 import { Provider } from 'react-redux';
 
 // import reducer from '../reducers/search';
@@ -40,18 +42,21 @@ const initialState = fromJS({
 //   }
 // }
 
-const logger = ({ getState, dispatch }) => next => action => {
-  console.log('Vamos a enviar está acción', action)
-  let returnValue = next(action)
-  console.log('Este es el nuevo estado de la aplicación', getState().toJS())
-  return returnValue
-}
+// const logger = ({ getState, dispatch }) => next => action => {
+//   console.log('Vamos a enviar está acción', action)
+//   let returnValue = next(action)
+//   console.log('Este es el nuevo estado de la aplicación', getState().toJS())
+//   return returnValue
+// }
 
 const store = createStore(
   reducer,
   initialState,
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  applyMiddleware(logger)
+  // applyMiddleware(logger)
+  composeWithDevTools(
+    applyMiddleware(logger),
+  )
 );
 
 ReactDOM.render(
