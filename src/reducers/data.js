@@ -1,4 +1,7 @@
 import { List as list } from 'immutable';
+import {
+  SEARCH_ENTITIES
+} from '../action-types/index';
 
 function data(state = {}, action) {
   switch (action.type) {
@@ -6,7 +9,7 @@ function data(state = {}, action) {
     //   return state
     // case 'REMOVE_ENTITY':
     //   return state
-    case 'SEARCH_ENTITIES': {
+    case SEARCH_ENTITIES: {
       // let results = [];
       // if (action.payload.query) {
       //   const list = state.categories[2].playlist;
