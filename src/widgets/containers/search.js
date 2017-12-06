@@ -18,7 +18,8 @@ class Search extends Component {
     //   }
     // })
     // this.props.dispatch(searchEntities(value))
-    this.props.actions.searchEntities(value)
+    // this.props.actions.searchEntities(value)
+    this.props.actions.searchAsyncEntities(value)
   }
   // handleInputChange = (event) => {
   //   this.setState({

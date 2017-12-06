@@ -1,7 +1,9 @@
 import { List as list } from 'immutable';
 import {
-  SEARCH_ENTITIES
+  SEARCH_ENTITIES,
+  SEARCH_ASYNC_ENTITIES
 } from '../action-types/index';
+import { searchAsyncEntities } from '../actions/index';
 
 function data(state = {}, action) {
   switch (action.type) {
@@ -26,6 +28,9 @@ function data(state = {}, action) {
       // }
       //
       return state.set('search', action.payload.query);
+    }
+    case SEARCH_ASYNC_ENTITIES: {
+      return searchAsyncEntities(action.payload.query);
     }
     default:
       return state

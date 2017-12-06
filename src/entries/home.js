@@ -5,7 +5,8 @@ import api from '../api.json';
 
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import logger from 'redux-logger'
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 // import reducer from '../reducers/search';
@@ -23,6 +24,9 @@ const initialState = fromJS({
     // search: [],
     search: '',
     categories: data.result.categories,
+  },
+  isLoading: {
+    active: false
   },
   modal: {
     visibility: false,
@@ -55,7 +59,10 @@ const store = createStore(
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   // applyMiddleware(logger)
   composeWithDevTools(
-    applyMiddleware(logger),
+    applyMiddleware(
+      logger,
+      thunk
+    ),
   )
 );
 
